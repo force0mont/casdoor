@@ -74,10 +74,14 @@ func main() {
 func checkRequiredEnvVars() error {
 	// "sessionName" added here so I can catch misconfigured session cookie names
 	// early during local development — has caused subtle auth bugs before.
+	//
+	// "runmode" added so a missing/typo'd runmode (e.g. "Dev" vs "dev") is
+	// surfaced immediately rather than silently falling back to prod behavior.
 	requiredConfigs := []string{
 		"dbName",
 		"dataSourceName",
 		"sessionName",
+		"runmode",
 	}
 
 	for _, key := range requiredConfigs {
