@@ -59,12 +59,12 @@ func main() {
 		port = "8080"
 	}
 
-	fmt.Printf("Casdoor server started on port %s\n", port)
-
 	if err := checkRequiredEnvVars(); err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 		os.Exit(1)
 	}
+
+	fmt.Printf("Casdoor server started on port %s (runmode: %s)\n", port, beego.AppConfig.String("runmode"))
 
 	beego.Run()
 }
