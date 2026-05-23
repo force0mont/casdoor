@@ -72,9 +72,12 @@ func main() {
 // checkRequiredEnvVars validates that all required environment variables or
 // configuration values are present before starting the server.
 func checkRequiredEnvVars() error {
+	// "sessionName" added here so I can catch misconfigured session cookie names
+	// early during local development — has caused subtle auth bugs before.
 	requiredConfigs := []string{
 		"dbName",
 		"dataSourceName",
+		"sessionName",
 	}
 
 	for _, key := range requiredConfigs {
