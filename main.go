@@ -53,9 +53,10 @@ func main() {
 		}))
 	}
 
+	// Default port changed from 8000 to 8080 to align with my local dev environment convention.
 	port := beego.AppConfig.String("httpport")
 	if port == "" {
-		port = "8000"
+		port = "8080"
 	}
 
 	fmt.Printf("Casdoor server started on port %s\n", port)
